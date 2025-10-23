@@ -1,6 +1,6 @@
 # Error Checking
 # Author: Caleb Bull
-# Date: 22/10/2025
+# Date: 24/10/2025
 # Version 1
 
 # Code that tests whether a valid input is given (v1)
@@ -35,6 +35,7 @@ print(f"The number that you have entered is {num}.")'''
         try:
             num = int(input("Please enter a number: "))
             done = True
+
         except ValueError:
             print("That is not a valid integer")
 
@@ -46,7 +47,7 @@ test_int_num() # This calls the function so that we can use it'''
 # Code that tests whether a value input is given (v1.3)
 # Use function parameters to make my code more pythonic.
 
-def test_int(question): # 'question' is a placeholder
+'''def test_int(question): # 'question' is a placeholder
     done = False
     while not done:
         error = "That is not a valid integer"
@@ -67,4 +68,38 @@ num2 = test_int("Please enter your second number: ")
 print(f"The second number you entered is {num2}. \n")
 
 sum = num1 + num2
-print(f"Your numbers added together equal to {sum}.")
+print(f"Your numbers added together equal to {sum}.")'''
+
+# Code that tests whether a value input is given (v1.4)
+# Use function parameters to make my code more pythonic.
+
+def valid_num(question, low, high):
+    error = f"Whoops, that's not an integer between {low} and {high}."
+    while True:
+        try:
+            response = int(input(question))
+            # if response >= 1 and response <= 10:
+            if low <= response <= high:
+                break # This stops the loop
+
+            else:
+                print(f"{error}\n")
+
+        except ValueError:
+            print(f"{error}\n")
+    return response # This makes the response available to be used
+
+num_1 = valid_num("Enter a number between 1 and 10: ",1,10)
+print(f"You entered {num_1}.\n")
+
+num_2 = valid_num("Enter a number between 15 and 25: ",15,25)
+print(f"You entered {num_2}.\n")
+
+num_3 = valid_num("Enter a number between 70 and 90: ",70,90)
+print(f"You entered {num_3}.\n")
+
+sum = num_1 + num_2 + num_3
+print(f"The total of {num_1}, {num_2} and {num_3} is {sum}.\n")
+
+multiply = num_1 * num_2 * num_3
+print(f"Your three numbers multplied together is {multiply}.\n")
